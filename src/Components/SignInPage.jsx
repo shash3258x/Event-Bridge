@@ -2,17 +2,17 @@ import React from 'react';
 
 export default function SignInPage({ onNavigate }) {
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#1E0707] font-sans antialiased">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#2A0B0B] font-sans antialiased">
       
-      {/* Left Panel - Heavily padded, premium tracking, and maximized layout weight */}
-      <div className="lg:col-span-5 bg-[#170505] p-12 md:p-20 lg:p-24 flex flex-col justify-between min-h-[500px] lg:min-h-screen border-r border-[#b43c28]/20">
+      {/* Left Panel - Corrected warmer layered accent hue */}
+      <div className="lg:col-span-5 bg-[#210808] p-12 md:p-20 lg:p-24 flex flex-col justify-between min-h-[500px] lg:min-h-screen border-r border-[#b43c28]/20">
         
         <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer text-[#F2EDE4] select-none">
           <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
           CONFLUX
         </div>
         
-        {/* Main Header Copy Area expanded fully to match our SignUp style alignment */}
+        {/* Main Header Copy Area */}
         <div className="my-auto py-16 lg:py-24">
           <h1 className="font-sans font-black uppercase text-7xl md:text-8xl xl:text-9xl leading-[0.85] tracking-tighter text-[#F2EDE4] mb-8 select-none">
             WELCOME<br /><span className="text-[#E84B1A] italic">BACK.</span>
@@ -27,8 +27,8 @@ export default function SignInPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* Right Form Panel */}
-      <div className="lg:col-span-7 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-[#1E0707]">
+      {/* Right Form Panel - Base background updated to match global workspace tone */}
+      <div className="lg:col-span-7 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-[#2A0B0B]">
         <div className="max-w-2xl w-full mx-auto">
           <header className="mb-10">
             <span className="text-xs font-black tracking-[0.2em] uppercase text-[#E84B1A]">SIGN IN</span>
@@ -43,7 +43,7 @@ export default function SignInPage({ onNavigate }) {
               <input 
                 type="email" 
                 placeholder="you@college.edu" 
-                className="w-full bg-[#170505] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
+                className="w-full bg-[#210808] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
               />
             </div>
             <div>
@@ -51,11 +51,11 @@ export default function SignInPage({ onNavigate }) {
               <input 
                 type="password" 
                 placeholder="********" 
-                className="w-full bg-[#170505] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
+                className="w-full bg-[#210808] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
               />
             </div>
 
-            {/* Primary Action Button - Overridden with absolute dimensions to prevent layout choking */}
+            {/* Primary Action Button */}
             <div className="pt-4">
               <button 
                 type="submit" 
@@ -68,7 +68,7 @@ export default function SignInPage({ onNavigate }) {
             
             <div className="text-center text-[#B07070] text-sm font-black tracking-widest py-1">OR</div>
             
-            {/* Google Authentication Option - Fixed heights and absolute padding matching */}
+            {/* Google Authentication Option */}
             <button 
               type="button" 
               className="w-full bg-transparent border-2 border-[#b43c28]/40 text-[#F2EDE4] font-black text-xs tracking-[0.18em] uppercase py-5 cursor-pointer hover:border-[#F2EDE4] hover:bg-[#F2EDE4]/5 transition-all flex items-center justify-center whitespace-nowrap"

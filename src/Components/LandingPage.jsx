@@ -32,10 +32,10 @@ export default function LandingPage({ onNavigate }) {
   };
 
   return (
-    <div key="v3-forced-layout" className="scroll-smooth min-h-screen bg-[#1E0707] text-[#F2EDE4] font-sans overflow-x-hidden antialiased">
+    <div key="v3-forced-layout" className="scroll-smooth min-h-screen bg-[#2A0B0B] text-[#F2EDE4] font-sans overflow-x-hidden antialiased">
       
-      {/* NAVIGATION BAR - Expanded and un-bound layout structure */}
-      <nav className="fixed top-0 left-0 right-0 h-[115px] px-8 md:px-16 bg-[#1E0707] border-b border-[#b43c28]/20 flex items-center justify-between z-50">
+      {/* NAVIGATION BAR - Exact matching background color */}
+      <nav className="fixed top-0 left-0 right-0 h-[115px] px-8 md:px-16 bg-[#2A0B0B] border-b border-[#b43c28]/20 flex items-center justify-between z-50">
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('landing'); }} className="text-3xl font-black tracking-normal flex items-center gap-3.5 uppercase text-[#F2EDE4] no-underline whitespace-nowrap">
           <span className="w-10 h-10 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:content-[''] after:w-4 after:h-4 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
           CONFLUX
@@ -53,7 +53,6 @@ export default function LandingPage({ onNavigate }) {
             SIGN IN
           </button>
           <div className="flex items-center gap-4">
-            {/* FORCE ADJUSTMENT: Overridden with explicit rigid horizontal padding and clean flex boundaries */}
             <button 
               onClick={() => onNavigate('signup')} 
               className="bg-[#E84B1A] text-white text-base font-black tracking-widest uppercase px-12 py-5 cursor-pointer border-none whitespace-nowrap flex items-center justify-center"
@@ -105,7 +104,7 @@ export default function LandingPage({ onNavigate }) {
       </section>
 
       {/* STATS BAR */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 bg-[#1E0707] border-b border-[#b43c28]/20 px-4 md:px-16 py-8">
+      <div className="grid grid-cols-2 lg:grid-cols-4 bg-[#2A0B0B] border-b border-[#b43c28]/20 px-4 md:px-16 py-8">
         <div className="p-8 md:p-12 text-center lg:text-left">
           <div className="text-6xl md:text-7xl font-black text-[#E84B1A] tracking-tight">450+</div>
         </div>
@@ -156,7 +155,7 @@ export default function LandingPage({ onNavigate }) {
         {/* FEED DISPLAY GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           <div className="bg-[#2D0C0C] p-10 flex flex-col justify-between min-h-[420px] border border-[#b43c28]/10 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-[220px] overflow-hidden bg-[#1E0707]">
+            <div className="absolute top-0 left-0 w-full h-[220px] overflow-hidden bg-[#2A0B0B]">
               <div className="w-full h-full bg-gradient-to-t from-[#2D0C0C] via-transparent to-transparent absolute inset-0 z-10" />
               <div className="w-full h-full bg-[#E84B1A]/10 flex items-center justify-center text-[#E84B1A]/30 font-black text-6xl tracking-widest uppercase italic">LIVE</div>
             </div>
@@ -174,13 +173,13 @@ export default function LandingPage({ onNavigate }) {
             </div>
           </div>
 
-          <div className="bg-[#E84B1A] p-10 flex flex-col justify-between text-[#1E0707] min-h-[420px]">
+          <div className="bg-[#E84B1A] p-10 flex flex-col justify-between text-[#2A0B0B] min-h-[420px]">
             <div>
-              <div className="text-xs font-black tracking-[0.2em] uppercase text-[#1E0707]/60 mb-8">FEATURED TOOL</div>
+              <div className="text-xs font-black tracking-[0.2em] uppercase text-[#2A0B0B]/60 mb-8">FEATURED TOOL</div>
               <h3 className="font-serif text-5xl md:text-6xl font-black italic leading-[1.05] mb-6 tracking-tight">{feedItems[activeFeedFilter].name}</h3>
               <p className="text-lg md:text-xl font-medium text-black/80 leading-relaxed tracking-wide">{feedItems[activeFeedFilter].desc}</p>
             </div>
-            <button className="w-full bg-[#1E0707] text-[#F2EDE4] font-black text-sm tracking-[0.2em] uppercase py-5 border-none cursor-pointer mt-8 hover:bg-black transition-colors">
+            <button className="w-full bg-[#2A0B0B] text-[#F2EDE4] font-black text-sm tracking-[0.2em] uppercase py-5 border-none cursor-pointer mt-8 hover:bg-black transition-colors">
               {feedItems[activeFeedFilter].btnText}
             </button>
           </div>
@@ -252,7 +251,7 @@ export default function LandingPage({ onNavigate }) {
             </p>
           </div>
           <div className="lg:col-span-7 bg-[#E84B1A] p-12 flex flex-col justify-center min-h-[340px]">
-            <h3 className="text-4xl md:text-5xl font-black uppercase text-[#1E0707] tracking-tight mb-4">INSTANT BOOKING</h3>
+            <h3 className="text-4xl md:text-5xl font-black uppercase text-[#2A0B0B] tracking-tight mb-4">INSTANT BOOKING</h3>
             <p className="text-lg md:text-xl font-medium text-black/80 max-w-[580px] leading-relaxed tracking-wide">
               Secure talent, sponsors and venues in clicks — not email chains that die in someone's inbox.
             </p>
@@ -266,21 +265,20 @@ export default function LandingPage({ onNavigate }) {
           </div>
           <div className="bg-[#2D0C0C] p-12 border border-[#b43c28]/20 flex flex-col justify-between min-h-[260px]">
             <h4 className="text-3xl font-black uppercase text-[#F2EDE4] tracking-tight">VENDOR MAPS</h4>
-            <div className="w-full bg-[#1E0707] h-1.5 mt-8 relative">
+            <div className="w-full bg-[#2A0B0B] h-1.5 mt-8 relative">
               <div className="absolute top-0 left-0 h-full w-2/3 bg-[#E84B1A]" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* FINAL CALL TO ACTION - Completely standardized sizing match with hero components */}
+      {/* FINAL CALL TO ACTION */}
       <section id="join" className="py-36 text-center bg-[#180505] px-8">
         <h2 className="font-sans font-black uppercase text-6xl md:text-8xl text-[#F2EDE4] tracking-tighter leading-none">PLUG IN.<br /><span className="text-[#E84B1A] italic font-serif normal-case">Light it up.</span></h2>
         <p className="max-w-[650px] mx-auto text-lg md:text-xl text-[#B07070] font-medium leading-relaxed tracking-wide mt-8">
           Join 450+ colleges already using Conflux to run bigger, better, easier events.
         </p>
         <div className="flex flex-col sm:flex-row gap-5 justify-center mt-12 max-w-[600px] mx-auto">
-          {/* FORCE ADJUSTMENT: Explicit absolute widths applied via inline styling to fully override engine calculations */}
           <button 
             onClick={() => onNavigate('signup')} 
             className="w-full sm:w-auto bg-[#E84B1A] border-none text-white font-black text-sm tracking-wider uppercase cursor-pointer hover:bg-[#FF5C25] transition-colors whitespace-nowrap flex items-center justify-center"
@@ -299,7 +297,7 @@ export default function LandingPage({ onNavigate }) {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#1E0707] border-t border-[#b43c28]/20 pt-24 pb-12 px-8 md:px-16">
+      <footer className="bg-[#2A0B0B] border-t border-[#b43c28]/20 pt-24 pb-12 px-8 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-20">
           <div className="md:col-span-5">
             <a href="#" className="text-3xl font-black tracking-tight flex items-center gap-3 uppercase text-[#F2EDE4] no-underline mb-6">

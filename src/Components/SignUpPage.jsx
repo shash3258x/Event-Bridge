@@ -13,20 +13,20 @@ export default function SignUpPage({ onNavigate }) {
   ];
 
   return (
-    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#1E0707] font-sans antialiased">
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#2A0B0B] font-sans antialiased">
       
-      {/* Left Panel - Greatly enhanced padding, max font-scaling, and vertical breathing room */}
-      <div className="lg:col-span-5 bg-[#170505] p-12 md:p-20 lg:p-24 flex flex-col justify-between min-h-[500px] lg:min-h-screen border-r border-[#b43c28]/20">
+      {/* Left Panel - Corrected warmer layered accent hue */}
+      <div className="lg:col-span-5 bg-[#210808] p-12 md:p-20 lg:p-24 flex flex-col justify-between min-h-[500px] lg:min-h-screen border-r border-[#b43c28]/20">
         
         <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer text-[#F2EDE4] select-none">
           <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
           CONFLUX
         </div>
         
-        {/* Main Content Area expanded heavily to eliminate empty space */}
+        {/* Main Content Area */}
         <div className="my-auto py-16 lg:py-24">
           <span className="text-sm font-black tracking-[0.3em] uppercase text-[#E84B1A] block mb-4">JOIN THE NETWORK</span>
-          <h1 className="font-sans font-black uppercase text-7xl md:text-8xl xl:text-9xl leading-[0.85] tracking-tighter text-[#F2EDE4] mb-8 select-none">
+          <h1 className="font-sans font-black uppercase text-7xl md:text-8xl xl:text-9xl() leading-[0.85] tracking-tighter text-[#F2EDE4] mb-8 select-none">
             LIGHT IT<br /><span className="text-[#E84B1A] italic">UP.</span>
           </h1>
           <p className="text-xl md:text-2xl text-[#B07070] leading-relaxed tracking-wide font-normal max-w-[540px]">
@@ -39,8 +39,8 @@ export default function SignUpPage({ onNavigate }) {
         </div>
       </div>
 
-      {/* Right Form Panel */}
-      <div className="lg:col-span-7 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-[#1E0707]">
+      {/* Right Form Panel - Base background updated to match global workspace tone */}
+      <div className="lg:col-span-7 p-8 md:p-16 lg:p-24 flex flex-col justify-center bg-[#2A0B0B]">
         <div className="max-w-2xl w-full mx-auto">
           <header className="mb-10">
             <span className="text-xs font-black tracking-[0.2em] uppercase text-[#B07070]">CREATE PROFILE · STEP 1</span>
@@ -49,14 +49,14 @@ export default function SignUpPage({ onNavigate }) {
             </h2>
           </header>
 
-          {/* Role Selection Grid */}
+          {/* Role Selection Grid - Synchronized base tile structures */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-[1px] bg-[#b43c28]/30 border border-[#b43c28]/30 mb-10">
             {roles.map((role) => (
               <div 
                 key={role.id}
                 onClick={() => setSelectedRole(role.id)}
                 className={`p-6 cursor-pointer transition-all min-h-[120px] flex flex-col justify-between select-none ${
-                  selectedRole === role.id ? 'bg-[#E84B1A] text-white' : 'bg-[#1E0707] text-[#F2EDE4] hover:bg-[#2D0C0C]'
+                  selectedRole === role.id ? 'bg-[#E84B1A] text-white' : 'bg-[#2A0B0B] text-[#F2EDE4] hover:bg-[#3D1414]'
                 }`}
               >
                 <div className="text-sm font-black tracking-wider uppercase">{role.label}</div>
@@ -72,7 +72,7 @@ export default function SignUpPage({ onNavigate }) {
               <input 
                 type="text" 
                 placeholder="Alex Chen" 
-                className="w-full bg-[#170505] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
+                className="w-full bg-[#210808] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
               />
             </div>
             
@@ -82,7 +82,7 @@ export default function SignUpPage({ onNavigate }) {
                 <input 
                   type="email" 
                   placeholder="you@college.edu" 
-                  className="w-full bg-[#170505] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
+                  className="w-full bg-[#210808] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
                 />
               </div>
               <div>
@@ -90,7 +90,7 @@ export default function SignUpPage({ onNavigate }) {
                 <input 
                   type="password" 
                   placeholder="At least 6 characters" 
-                  className="w-full bg-[#170505] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
+                  className="w-full bg-[#210808] border border-[#b43c28]/40 px-5 py-4 text-base font-medium text-[#F2EDE4] placeholder-[#B07070]/40 focus:outline-none focus:border-[#E84B1A] transition-colors" 
                 />
               </div>
             </div>
