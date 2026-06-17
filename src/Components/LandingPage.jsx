@@ -34,7 +34,7 @@ export default function LandingPage({ onNavigate }) {
   return (
     <div key="v3-forced-layout" className="scroll-smooth min-h-screen bg-[#2A0B0B] text-[#F2EDE4] font-sans overflow-x-hidden antialiased">
       
-      {/* NAVIGATION BAR - Exact matching background color */}
+      {/* NAVIGATION BAR */}
       <nav className="fixed top-0 left-0 right-0 h-[115px] px-8 md:px-16 bg-[#2A0B0B] border-b border-[#b43c28]/20 flex items-center justify-between z-50">
         <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('landing'); }} className="text-3xl font-black tracking-normal flex items-center gap-3.5 uppercase text-[#F2EDE4] no-underline whitespace-nowrap">
           <span className="w-10 h-10 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:content-[''] after:w-4 after:h-4 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
@@ -103,19 +103,23 @@ export default function LandingPage({ onNavigate }) {
         </div>
       </section>
 
-      {/* STATS BAR */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 bg-[#2A0B0B] border-b border-[#b43c28]/20 px-4 md:px-16 py-8">
-        <div className="p-8 md:p-12 text-center lg:text-left">
+      {/* STATS BAR - Corrected labels and centralized grid alignments */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 bg-[#2A0B0B] border-b border-[#b43c28]/20 px-4 md:px-16 py-10">
+        <div className="p-8 md:p-12 flex flex-col items-center justify-center text-center">
           <div className="text-6xl md:text-7xl font-black text-[#E84B1A] tracking-tight">450+</div>
+          <div className="text-[11px] font-black tracking-[0.18em] uppercase text-[#B07070] mt-3 whitespace-nowrap">COLLEGES JOINED</div>
         </div>
-        <div className="p-8 md:p-12 text-center lg:text-left">
+        <div className="p-8 md:p-12 flex flex-col items-center justify-center text-center">
           <div className="text-6xl md:text-7xl font-black text-[#E84B1A] tracking-tight">$2.4M</div>
+          <div className="text-[11px] font-black tracking-[0.18em] uppercase text-[#B07070] mt-3 whitespace-nowrap">SPONSORSHIP VALUE</div>
         </div>
-        <div className="p-8 md:p-12 text-center lg:text-left">
+        <div className="p-8 md:p-12 flex flex-col items-center justify-center text-center">
           <div className="text-6xl md:text-7xl font-black text-[#E84B1A] tracking-tight">12k</div>
+          <div className="text-[11px] font-black tracking-[0.18em] uppercase text-[#B07070] mt-3 whitespace-nowrap">VERIFIED TALENT</div>
         </div>
-        <div className="p-8 md:p-12 text-center lg:text-left">
+        <div className="p-8 md:p-12 flex flex-col items-center justify-center text-center">
           <div className="text-6xl md:text-7xl font-black text-[#E84B1A] tracking-tight">98%</div>
+          <div className="text-[11px] font-black tracking-[0.18em] uppercase text-[#B07070] mt-3 whitespace-nowrap">RELIABILITY SCORE</div>
         </div>
       </div>
 
