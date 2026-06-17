@@ -127,7 +127,7 @@ export default function SignUpPage({ onNavigate }) {
           </footer>
         </div>
       </div>
-
+//testing commit
     </div>
   );
 }
