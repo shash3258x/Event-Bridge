@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import LandingPage from './Components/LandingPage';
 import SignUpPage from './Components/SignUpPage';
 import SignInPage from './Components/SignInPage';
+import EventsPage from './Components/EventsPage';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -17,7 +18,10 @@ function AppContent() {
       navigate('/signin');
     } else if (page === 'signup') {
       navigate('/signup');
+    } else if (page === 'events') {
+      navigate('/events');
     }
+
   };
 
   return (
@@ -27,6 +31,7 @@ function AppContent() {
         <Route path="/" element={<LandingPage onNavigate={navigateTo} />} />
         <Route path="/signup" element={<SignUpPage onNavigate={navigateTo} />} />
         <Route path="/signin" element={<SignInPage onNavigate={navigateTo} />} />
+        <Route path="/events" element={<EventsPage onNavigate={navigateTo} />} />
       </Routes>
     </div>
   );

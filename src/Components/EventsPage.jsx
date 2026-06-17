@@ -109,7 +109,8 @@ export default function EventsPage({ onNavigate }) {
           {filteredEvents.map((event) => (
             <div 
               key={event.eventId} 
-              className="bg-[#210808] border border-[#b43c28]/20 flex flex-col justify-between min-h-[500px] relative group hover:border-[#E84B1A] transition-colors"
+              onClick={() => onNavigate(`event-${event.eventId}`)}
+              className="bg-[#210808] border border-[#b43c28]/20 flex flex-col justify-between min-h-[500px] relative group hover:border-[#E84B1A] cursor-pointer transition-colors"
             >
               
               {/* Massive Editorial Styled Header Character Placeholder Section */}
@@ -163,7 +164,7 @@ export default function EventsPage({ onNavigate }) {
 
         {/* Empty State Layout Fallback Trigger */}
         {filteredEvents.length === 0 && (
-          <div className="py-24 text-center border border-dashed border-[#b43c28]/20 text-[#B07070] font-bold tracking-wide">
+          <div className="py-24 text-center border border-dashed border-[#b43c28]/20 text-[#B07070] font-bold tracking-wide uppercase text-sm">
             No events match the active search or category filters.
           </div>
         )}
