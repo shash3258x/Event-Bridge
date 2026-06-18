@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+// FIXED: Added useParams right here in the import statement
+import { BrowserRouter as Router, Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import LandingPage from './Components/LandingPage';
 import SignUpPage from './Components/SignUpPage';
 import SignInPage from './Components/SignInPage';
 import EventsPage from './Components/EventsPage';
+import EventDetailsPage from './Components/EventDetailsPage';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -20,8 +22,15 @@ function AppContent() {
       navigate('/signup');
     } else if (page === 'events') {
       navigate('/events');
+    } else if (page.startsWith('event-')) {
+      const id = page.replace('event-', '');
+      navigate(`/events/${id}`);
     }
+  };
 
+  const EventDetailsWrapper = () => {
+    const { id } = useParams();
+    return <EventDetailsPage eventId={id} onNavigate={navigateTo} />;
   };
 
   return (
@@ -32,6 +41,7 @@ function AppContent() {
         <Route path="/signup" element={<SignUpPage onNavigate={navigateTo} />} />
         <Route path="/signin" element={<SignInPage onNavigate={navigateTo} />} />
         <Route path="/events" element={<EventsPage onNavigate={navigateTo} />} />
+        <Route path="/events/:id" element={<EventDetailsWrapper />} />
       </Routes>
     </div>
   );
