@@ -42,10 +42,22 @@ export default function MeProfilePage({ onNavigate }) {
       
       {/* 1. TOP NAVBAR LAYOUT */}
       <nav className="h-[115px] px-8 md:px-16 border-b border-[#b43c28]/20 flex items-center justify-between sticky top-0 bg-[#2A0B0B]/95 backdrop-blur-md z-40 w-full">
-        <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
-          <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
-          CONFLUX
+        <div className="flex items-center gap-10">
+          <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
+            <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
+            CONFLUX
+          </div>
+          
+          <button 
+            onClick={() => onNavigate('profile-me')}
+            className="bg-[#F2EDE4] border-none text-[#2A0B0B] text-base font-black tracking-[0.2em] uppercase cursor-pointer hover:bg-white transition-colors flex flex-col items-start justify-center px-8 py-3.5 shadow-md select-none leading-none shrink-0"
+            style={{ minHeight: '68px' }}
+          >
+            <span>YOUR</span>
+            <span className="mt-1">PROFILE</span>
+          </button>
         </div>
+
         <button 
           onClick={() => {
             localStorage.removeItem('userSession');
@@ -81,10 +93,10 @@ export default function MeProfilePage({ onNavigate }) {
       {/* 3. FOUR-COLUMN COUNTER METRICS STRIP */}
       <section className="px-8 md:px-16 w-full mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {[
-          { label: "APPLICATIONS RECEIVED", count: "0", sub: "0 approved · 0 review pending" },
-          { label: "EVENTS INSTANTED", count: "0", sub: "—" },
-          { label: "HUB FOLLOWERS", count: "0", sub: "tracking your committee" },
-          { label: "PARTNERS CONNECTED", count: "0", sub: "verified network tags" }
+          { label: "APPLICATIONS RECEIVED", count: "2", sub: "0 approved · 2 review pending" },
+          { label: "EVENTS INSTANCED", count: "3", sub: "Tarang · Synapse · i.Fest" },
+          { label: "HUB FOLLOWERS", count: "1,420", sub: "tracking your committee" },
+          { label: "PARTNERS CONNECTED", count: "12", sub: "verified network tags" }
         ].map((block, idx) => (
           <div key={idx} className="bg-[#210808] border border-[#b43c28]/20 p-10 flex flex-col justify-between min-h-[200px]">
             <div className="text-xs font-black tracking-[0.25em] text-[#B07070] uppercase">{block.label}</div>
@@ -95,7 +107,7 @@ export default function MeProfilePage({ onNavigate }) {
       </section>
 
       {/* 4. PRIVATE HUB SPECIFICATION DISPLAY */}
-      <main className="px-8 md:px-16 w-full pb-36 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      <main className="px-8 md:px-16 w-full pb-24 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         <div className="lg:col-span-8 bg-[#210808] border border-[#b43c28]/20 p-12 relative">
           <div className="flex justify-between items-center border-b border-[#b43c28]/10 pb-6 mb-10">
             <div className="text-base font-black tracking-[0.25em] text-white uppercase flex items-center gap-3">
@@ -175,20 +187,36 @@ export default function MeProfilePage({ onNavigate }) {
         </div>
       </main>
 
-      {/* 5. APPLICANT LOG PANELS FOOTER TRACKER */}
+      {/* 5. OPERATIONAL COMMAND HUB (Premium Dashboard Gateway Architecture) */}
       <section className="px-8 md:px-16 pb-40 w-full border-t border-[#b43c28]/10 pt-20">
-        <div className="text-sm font-black tracking-[0.25em] text-white uppercase mb-10">
-          ▶ INCOMING APPLICANT TRANSACTION LOG
+        <div className="text-xs font-black tracking-[0.3em] text-[#E84B1A] uppercase mb-10">
+          ▶ LIVE MANAGEMENT SUBSYSTEMS
         </div>
-        <div className="text-2xl text-[#B07070] font-medium tracking-wide">
-          No active partner submissions found to process.{' '}
-          <span onClick={() => onNavigate('events')} className="text-[#E84B1A] font-black underline cursor-pointer hover:text-[#FF5C25] tracking-wider ml-1">
-            Explore live marketplace activities —
-          </span>
+        
+        <div className="bg-[#210808] border-l-4 border-[#E84B1A] border-y border-r border-[#b43c28]/20 p-12 flex flex-col lg:flex-row lg:items-center justify-between gap-10 max-w-5xl">
+          <div className="space-y-3">
+            <div className="text-xs font-black tracking-[0.25em] text-[#B07070] uppercase">
+              ACCREDITED INTERFACE
+            </div>
+            <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide leading-tight">
+              Applications & Partnerships Pipeline
+            </h3>
+            <p className="text-lg text-[#B07070] max-w-2xl font-medium leading-relaxed">
+              Review incoming sponsor requests, performer fests, and community credentials. Authorize vendor permissions or manage crew allocations live.
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigate('organizer-dashboard')}
+            className="bg-[#F2EDE4] border-none text-[#2A0B0B] font-black text-sm tracking-[0.25em] uppercase px-12 py-6 hover:bg-white transition-all cursor-pointer shrink-0 shadow-xl"
+            style={{ minHeight: '68px' }}
+          >
+            LAUNCH DASHBOARD →
+          </button>
         </div>
       </section>
 
-      {/* 🌟 2X ENHANCED ACCESSIBLE FULL-SCREEN OVERLAY BIO EDITOR MODAL WINDOW 🌟 */}
+      {/* 🌟 OVERLAY BIO EDITOR MODAL WINDOW 🌟 */}
       {isEditModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-8 md:p-16 bg-[#180505]/95 backdrop-blur-2xl transition-all">
           <div className="bg-[#2A0B0B] border-2 border-[#E84B1A] max-w-5xl w-full p-12 md:p-16 shadow-2xl relative flex flex-col justify-between max-h-[92vh] overflow-y-auto">

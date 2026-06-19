@@ -143,7 +143,7 @@ export default function OrganizerDashboardPage({ onNavigate }) {
   return (
     <div className="min-h-screen bg-[#2A0B0B] text-[#F2EDE4] font-sans antialiased w-full relative overflow-x-hidden">
 
-      {/* 1. TOP NAVBAR */}
+      {/* 1. TOP NAVBAR — Unified Brand Component Context */}
       <nav className="h-[115px] px-8 md:px-16 border-b border-[#b43c28]/20 flex items-center justify-between sticky top-0 bg-[#2A0B0B]/95 backdrop-blur-md z-40 w-full">
         <div className="flex items-center gap-10">
           <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
@@ -161,17 +161,18 @@ export default function OrganizerDashboardPage({ onNavigate }) {
           </button>
         </div>
 
-        <div className="flex items-center gap-6">
-          <button
-            onClick={() => onNavigate('create-event')}
-            className="bg-[#E84B1A] border-none text-white text-sm font-black tracking-[0.2em] uppercase cursor-pointer hover:bg-[#FF5C25] transition-colors px-8 py-4.5"
-          >
-            + NEW EVENT
-          </button>
-        </div>
+        <button 
+          onClick={() => {
+            localStorage.removeItem('userSession');
+            onNavigate('landing');
+          }}
+          className="bg-transparent border border-[#b43c28]/40 text-[#F2EDE4] text-sm font-black tracking-[0.2em] uppercase px-10 py-4.5 hover:border-[#E84B1A] hover:text-[#E84B1A] transition-colors"
+        >
+          LOG OUT
+        </button>
       </nav>
 
-      {/* 2. HEADER + EVENT SELECTOR */}
+      {/* 2. HEADER BLOCK */}
       <header className="px-8 md:px-16 pt-20 pb-12 w-full flex flex-col md:flex-row md:items-end md:justify-between gap-8">
         <div className="space-y-5">
           <div className="text-sm font-black tracking-[0.3em] uppercase text-[#E84B1A]">
@@ -183,22 +184,39 @@ export default function OrganizerDashboardPage({ onNavigate }) {
         </div>
       </header>
 
-      {/* 3. EVENT TABS */}
-      <section className="px-8 md:px-16 w-full mb-16 flex flex-wrap gap-4">
-        {MOCK_EVENTS.map((evt) => (
-          <button
-            key={evt.eventId}
-            onClick={() => setSelectedEventId(evt.eventId)}
-            className={`px-8 py-5 border text-left font-black tracking-wide transition-colors ${
-              evt.eventId === selectedEventId
-                ? 'bg-[#E84B1A] border-[#E84B1A] text-white'
-                : 'bg-[#210808] border-[#b43c28]/20 text-[#B07070] hover:border-[#E84B1A] hover:text-white'
-            }`}
-          >
-            <div className="text-xl">{evt.title}</div>
-            <div className="text-xs uppercase tracking-[0.2em] mt-1 opacity-80">{evt.city} · {evt.startDate}</div>
-          </button>
-        ))}
+      {/* 3. EVENT TABS + RIGHT-ALIGNED INLINE CREATE ACTION BUTTON */}
+      <section className="px-8 md:px-16 w-full mb-16 flex flex-col md:flex-row items-start md:items-stretch justify-between gap-6">
+        
+        {/* Left Layout Container: Flex wrapped Tab Buttons */}
+        <div className="flex flex-wrap gap-4 items-stretch">
+          {MOCK_EVENTS.map((evt) => (
+            <button
+              key={evt.eventId}
+              onClick={() => setSelectedEventId(evt.eventId)}
+              className={`px-8 py-5 border text-left font-black tracking-wide transition-colors ${
+                evt.eventId === selectedEventId
+                  ? 'bg-[#E84B1A] border-[#E84B1A] text-white'
+                  : 'bg-[#210808] border-[#b43c28]/20 text-[#B07070] hover:border-[#E84B1A] hover:text-white'
+              }`}
+            >
+              <div className="text-xl">{evt.title}</div>
+              <div className="text-xs uppercase tracking-[0.2em] mt-1 opacity-80">{evt.city} · {evt.startDate}</div>
+            </button>
+          ))}
+        </div>
+
+        {/* Right Layout Container: Snapped Create Action Block Box */}
+        <button
+          onClick={() => onNavigate('create-event')}
+          className="bg-[#F2EDE4] border-none text-[#2A0B0B] hover:bg-white transition-colors px-10 py-5 flex flex-col justify-center items-start font-black tracking-wide shadow-md cursor-pointer shrink-0 select-none md:self-stretch"
+        >
+          <div className="text-xl leading-none flex items-center gap-2">
+            <span className="text-lg">+</span> CREATE EVENT
+          </div>
+          <div className="text-xs uppercase tracking-[0.15em] mt-1.5 opacity-75 font-sans">
+            ADD NEW PIPELINE
+          </div>
+        </button>
       </section>
 
       <main className="px-8 md:px-16 w-full pb-40 space-y-20">
@@ -225,7 +243,7 @@ export default function OrganizerDashboardPage({ onNavigate }) {
           </div>
         </section>
 
-        {/* 5. APPLICATIONS */}
+        {/* 5. APPLICATIONS TRACKER CONTAINER */}
         <section>
           <div className="flex items-center justify-between mb-10 border-b border-[#b43c28]/10 pb-6">
             <h2 className="font-serif italic font-normal text-5xl text-white tracking-wide">Applications</h2>

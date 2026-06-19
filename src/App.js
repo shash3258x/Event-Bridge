@@ -7,7 +7,8 @@ import EventsPage from './Components/EventsPage';
 import EventDetailsPage from './Components/EventDetailsPage';
 import ProfilePage from './Components/ProfilePage';
 import MeProfilePage from './Components/MeProfilePage';
-import OrganizerDashboardPage from './Components/OrganizerDashboardPage'; // 1. IMPORTED THE DASHBOARD COMPONENT
+import OrganizerDashboardPage from './Components/OrganizerDashboardPage';
+import CreateEventPage from './Components/CreateEventPage';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -27,8 +28,9 @@ function AppContent() {
     } else if (page === 'profile-me') {
       navigate('/me');
     } else if (page === 'organizer-dashboard') {
-      // 2. PARSES ROUTE TO TARGET THE ORGANIZER METRICS PANEL
       navigate('/dashboard');
+    } else if (page === 'create-event') {
+      navigate('/create-event');
     } else if (page.startsWith('event-')) {
       const id = page.replace('event-', '');
       navigate(`/events/${id}`);
@@ -70,8 +72,11 @@ function AppContent() {
           {/* Private Committee/Company Management Command Profile Deck */}
           <Route path="/me" element={<MeProfilePage onNavigate={navigateTo} />} />
 
-          {/* 3. MOUNTED DYNAMIC PATH ROUTE FOR THE ORGANIZER HUB PANELS */}
+          {/* Dedicated Application Intake Management Systems */}
           <Route path="/dashboard" element={<OrganizerDashboardPage onNavigate={navigateTo} />} />
+
+          {/* Event Creation & Strategic Launch Hub Pipeline */}
+          <Route path="/create-event" element={<CreateEventPage onNavigate={navigateTo} />} />
         </Routes>
       </div>
 
