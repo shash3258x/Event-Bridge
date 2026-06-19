@@ -36,21 +36,36 @@ export default function EventsPage({ onNavigate }) {
     <div className="min-h-screen bg-[#2A0B0B] text-[#F2EDE4] font-sans antialiased overflow-x-hidden w-full">
       
       {/* Top Bar Layout */}
-      <nav className="h-[115px] px-8 md:px-16 border-b border-[#b43c28]/20 flex items-center justify-between sticky top-0 bg-[#2A0B0B]/95 backdrop-blur-md z-40 w-full">
-        <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
-          <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
-          CONFLUX
-        </div>
-        <button 
-          onClick={() => {
-            localStorage.removeItem('userSession');
-            onNavigate('landing');
-          }} 
-          className="bg-transparent border border-[#b43c28]/40 text-[#F2EDE4] text-sm font-black tracking-[0.2em] uppercase px-10 py-4.5 hover:border-[#E84B1A] hover:text-[#E84B1A] transition-colors"
-        >
-          LOG OUT
-        </button>
-      </nav>
+<nav className="h-[115px] px-8 md:px-16 border-b border-[#b43c28]/20 flex items-center justify-between sticky top-0 bg-[#2A0B0B]/95 backdrop-blur-md z-40 w-full">
+  {/* Left Section: Branding + Scaled Vertical Profile Box */}
+  <div className="flex items-center gap-10">
+    <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
+      <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
+      CONFLUX
+    </div>
+    
+    {/* Slightly lower profile footprint box */}
+    <button 
+      onClick={() => onNavigate('profile-me')}
+      className="bg-[#F2EDE4] border-none text-[#2A0B0B] text-base font-black tracking-[0.2em] uppercase cursor-pointer hover:bg-white transition-colors flex flex-col items-start justify-center px-8 py-3.5 shadow-md select-none leading-none shrink-0"
+      style={{ minHeight: '68px' }}
+    >
+      <span>YOUR</span>
+      <span className="mt-1">PROFILE</span>
+    </button>
+  </div>
+
+  {/* Right Section */}
+  <button 
+    onClick={() => {
+      localStorage.removeItem('userSession');
+      onNavigate('landing');
+    }} 
+    className="bg-transparent border border-[#b43c28]/40 text-[#F2EDE4] text-sm font-black tracking-[0.2em] uppercase px-10 py-4.5 hover:border-[#E84B1A] hover:text-[#E84B1A] transition-colors"
+  >
+    LOG OUT
+  </button>
+</nav>
 
       {/* Hero Header Area */}
       <header className="px-8 md:px-16 pt-28 pb-20 w-full">

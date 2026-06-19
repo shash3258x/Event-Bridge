@@ -8,6 +8,10 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
   const [activeModalOpportunity, setActiveModalOpportunity] = useState(null);
   const [applicationMessage, setApplicationMessage] = useState('');
 
+  // Simulating an organizer map connection for the fests
+  const organizerId = "org-codex"; 
+  const organizerName = "CodeX Club";
+
   const handleOpenModal = (opportunityId, title, type) => {
     setActiveModalOpportunity({ id: opportunityId, title, type });
     setApplicationMessage(''); 
@@ -39,17 +43,31 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
       
       {/* 1. TOP NAVBAR HEADER SECTION */}
       <nav className="h-[115px] px-8 md:px-16 border-b border-[#b43c28]/20 flex items-center justify-between sticky top-0 bg-[#2A0B0B]/95 backdrop-blur-md z-40 w-full">
-        <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
-          <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
-          CONFLUX
-        </div>
-        <button 
-          onClick={() => onNavigate('events')} 
-          className="bg-transparent border-none text-[#F2EDE4] text-base font-black tracking-[0.25em] uppercase cursor-pointer hover:text-[#E84B1A] transition-colors flex items-center gap-2"
-        >
-          ← ALL EVENTS
-        </button>
-      </nav>
+  {/* Left Section: Branding + Scaled Vertical Profile Box */}
+  <div className="flex items-center gap-10">
+    <div onClick={() => onNavigate('landing')} className="text-4xl font-black uppercase tracking-tight flex items-center gap-4 cursor-pointer select-none">
+      <span className="w-11 h-11 rounded-full border-[3px] border-[#E84B1A] flex items-center justify-center after:w-4.5 after:h-4.5 after:bg-[#E84B1A] after:rounded-full shrink-0"></span>
+      CONFLUX
+    </div>
+
+    <button 
+      onClick={() => onNavigate('profile-me')}
+      className="bg-[#F2EDE4] border-none text-[#2A0B0B] text-base font-black tracking-[0.2em] uppercase cursor-pointer hover:bg-white transition-colors flex flex-col items-start justify-center px-8 py-3.5 shadow-md select-none leading-none shrink-0"
+      style={{ minHeight: '68px' }}
+    >
+      <span>YOUR</span>
+      <span className="mt-1">PROFILE</span>
+    </button>
+  </div>
+
+  {/* Right Section */}
+  <button 
+    onClick={() => onNavigate('events')} 
+    className="bg-transparent border-none text-[#F2EDE4] text-base font-black tracking-[0.25em] uppercase cursor-pointer hover:text-[#E84B1A] transition-colors flex items-center gap-2"
+  >
+    ← ALL EVENTS
+  </button>
+</nav>
 
       {/* 2. MAIN HERO FRAME SECTION */}
       <header className="px-8 md:px-16 pt-28 pb-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
@@ -64,6 +82,8 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
           <p className="text-2xl md:text-3xl text-[#B07070] font-normal leading-relaxed tracking-wide pt-4">
             {currentEvent.description}
           </p>
+          
+          {/* Main Grid: When and Where Metrics Blocks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-14 border-t border-[#b43c28]/10 mt-16">
             <div>
               <div className="text-sm font-black tracking-[0.25em] text-[#E84B1A] uppercase mb-4">WHEN</div>
@@ -73,6 +93,20 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               <div className="text-sm font-black tracking-[0.25em] text-[#E84B1A] uppercase mb-4">WHERE</div>
               <div className="text-3xl font-black text-white tracking-wide">{currentEvent.venue}</div>
               <div className="text-xl font-bold text-[#B07070] mt-1">{currentEvent.city}</div>
+            </div>
+          </div>
+
+          {/* ADDED: Upscaled Host Identification Block mapping to public Profile page */}
+          <div className="pt-10 border-t border-[#b43c28]/10 space-y-3">
+            <div className="text-sm font-black tracking-[0.25em] text-[#B07070] uppercase">BY HOST COMMITTEE</div>
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-8">
+              <div className="text-3xl font-black text-white tracking-wide">{organizerName}</div>
+              <button 
+                onClick={() => onNavigate(`profile-${organizerId}`)}
+                className="bg-transparent border-none text-[#E84B1A] font-black text-lg tracking-widest uppercase cursor-pointer hover:underline p-0 self-start sm:self-auto"
+              >
+                VIEW HUB PROFILE →
+              </button>
             </div>
           </div>
         </div>
@@ -125,10 +159,20 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">Title Sponsor</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Main stage branding, social promotions, premium stall.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Tier</span><span className="text-white text-2xl font-bold">Title</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Budget</span><span className="text-4xl font-black text-[#E84B1A]">₹50,000</span></div>
-                <div className="flex justify-between items-start gap-4"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider pt-0.5 shrink-0">Perks</span><span className="text-white text-right text-xl font-semibold leading-relaxed max-w-md">Main Stage Branding, Instagram Promotions, Event Stall</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Tier</span>
+                  <span className="text-white text-2xl font-bold">Title</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Budget</span>
+                  <span className="text-4xl font-black text-[#E84B1A]">₹50,000</span>
+                </div>
+                <div className="flex justify-between items-start gap-4">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider pt-0.5 shrink-0">Perks</span>
+                  <span className="text-white text-right text-xl font-semibold leading-relaxed max-w-md">Main Stage Branding, Instagram Promotions, Event Stall</span>
+                </div>
               </div>
             </div>
             <button 
@@ -151,10 +195,20 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">DJ Night Headliner</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Closing night EDM set on the main stage.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Genre</span><span className="text-white text-2xl font-bold">EDM</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Duration</span><span className="text-white text-2xl font-bold">90 mins</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Fee</span><span className="text-4xl font-black text-[#E84B1A]">₹30,000</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Genre</span>
+                  <span className="text-white text-2xl font-bold">EDM</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Duration</span>
+                  <span className="text-white text-2xl font-bold">90 mins</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Fee</span>
+                  <span className="text-4xl font-black text-[#E84B1A]">₹30,000</span>
+                </div>
               </div>
             </div>
             <button 
@@ -177,10 +231,20 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">Coding Competition Judge</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Judge final round of the flagship coding contest.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Competition</span><span className="text-white text-2xl font-bold">Code Sprint</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Expertise</span><span className="text-white text-2xl font-bold">Competitive Programming</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Judging Date</span><span className="text-white text-2xl font-bold">{currentEvent.startDate}</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Competition</span>
+                  <span className="text-white text-2xl font-bold">Code Sprint</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Expertise</span>
+                  <span className="text-white text-2xl font-bold">Competitive Programming</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Judging Date</span>
+                  <span className="text-white text-2xl font-bold">{currentEvent.startDate}</span>
+                </div>
               </div>
             </div>
             <button 
@@ -203,10 +267,20 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">Volunteer Coordinator</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Lead a squad of volunteers on event days.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Needed</span><span className="text-3xl font-black text-[#E84B1A]">25</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Hours</span><span className="text-white text-2xl font-bold">15</span></div>
-                <div className="flex justify-between items-start gap-4"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider pt-0.5 shrink-0">Skills</span><span className="text-white text-right text-xl font-semibold leading-relaxed max-w-md">Crowd Management, Communication</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Needed</span>
+                  <span className="text-3xl font-black text-[#E84B1A]">25</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Hours</span>
+                  <span className="text-white text-2xl font-bold">15</span>
+                </div>
+                <div className="flex justify-between items-start gap-4">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider pt-0.5 shrink-0">Skills</span>
+                  <span className="text-white text-right text-xl font-semibold leading-relaxed max-w-md">Crowd Management, Communication</span>
+                </div>
               </div>
             </div>
             <button 
@@ -229,8 +303,12 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">Food Vendor</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Set up a food stall across all event days.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Category</span><span className="text-white text-2xl font-bold">Food</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Category</span>
+                  <span className="text-white text-2xl font-bold">Food</span>
+                </div>
               </div>
             </div>
             <button 
@@ -253,9 +331,16 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
               </div>
               <h3 className="font-serif italic font-normal text-4xl text-white tracking-wide">Partner College</h3>
               <p className="text-xl text-[#B07070]/90 leading-relaxed font-medium">Cross-promote with another college fest.</p>
+              
               <div className="pt-8 space-y-6 border-t border-[#b43c28]/10">
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">City</span><span className="text-white text-2xl font-bold">Vadodara</span></div>
-                <div className="flex justify-between items-center"><span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Type</span><span className="text-white text-2xl font-bold">Cross Promotion</span></div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">City</span>
+                  <span className="text-white text-2xl font-bold">Vadodara</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#F2EDE4]/80 uppercase text-lg font-extrabold tracking-wider">Type</span>
+                  <span className="text-white text-2xl font-bold">Cross Promotion</span>
+                </div>
               </div>
             </div>
             <button 
@@ -305,8 +390,6 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
       {/* ========================================================================= */}
       {activeModalOpportunity && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-8 md:p-16 bg-[#180505]/90 backdrop-blur-2xl transition-all">
-          
-          {/* FIXED: Scaled up to max-w-5xl (Double horizontal presence) and padded deeply */}
           <div className="bg-[#2A0B0B] border-2 border-[#E84B1A] max-w-5xl w-full p-12 md:p-16 shadow-2xl relative flex flex-col justify-between max-h-[90vh] overflow-y-auto">
             
             <button 
@@ -317,28 +400,23 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
             </button>
 
             <div className="space-y-8 w-full">
-              {/* FIXED: Upscaled section tag headers */}
               <div className="text-sm font-black tracking-[0.35em] uppercase text-[#E84B1A]">
                 SUBMITTING APPLICATION · {activeModalOpportunity.type} ACCESS PORTAL
               </div>
               
-              {/* FIXED: Increased pitch name to text-5xl for prominent presentation staging */}
               <h2 className="font-serif italic font-normal text-5xl md:text-6xl text-white tracking-wide">
                 {activeModalOpportunity.title}
               </h2>
               
-              {/* FIXED: Paragraph text upscaled to text-xl */}
               <p className="text-xl text-[#B07070] leading-relaxed font-medium">
                 Pitch directly to the main planning coordinators of <span className="text-white font-black">{currentEvent.title}</span>. State your verified operational portfolio highlights or metrics below to stand out.
               </p>
 
               <form onSubmit={handleConfirmSubmit} className="pt-6 space-y-8">
                 <div className="space-y-4">
-                  {/* FIXED: Labels pushed up to text-sm */}
                   <label className="block text-sm font-black tracking-[0.25em] text-white/80 uppercase">
                     PROPOSAL MESSAGE & CAPABILITY BRIEF
                   </label>
-                  {/* FIXED: Upscaled height to rows="8" and text structure to text-xl for effortless room readability */}
                   <textarea 
                     required
                     rows="8"
@@ -349,7 +427,6 @@ export default function EventDetailsPage({ eventId, onNavigate }) {
                   />
                 </div>
 
-                {/* FIXED: Massive button configurations */}
                 <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <button 
                     type="button"
